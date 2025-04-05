@@ -1,23 +1,22 @@
 package io.github.terahidro2003.cct.result;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-@Getter
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
 public class VmMeasurement implements Serializable {
-    List<Double> measurements = new ArrayList<Double>();
-    int vm;
+    
+   private static final long serialVersionUID = -5204256744692818564L;
+   
+   List<Double> measurements = new ArrayList<Double>();
+   int vm;
 
-    public int getVm() {
+   public VmMeasurement(List<Double> measurements, int vm) {
+      this.measurements = measurements;
+      this.vm = vm;
+   }
+
+   public int getVm() {
         return vm;
     }
 

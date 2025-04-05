@@ -1,38 +1,26 @@
 package io.github.terahidro2003.cct.result;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.*;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@Getter
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 public class StackTraceTreeNode implements Serializable {
-    @Getter
+    private static final long serialVersionUID = 2020639317534105695L;
+
     private final List<String> parentMethodNames = new ArrayList<>();
 
     @JsonIgnore
     private StackTraceTreeNode parent;
-    @Getter
-    @Setter
     private List<StackTraceTreeNode> children;
-    @Getter
     private StackTraceTreePayload payload;
 
-    @Setter
-    @Getter
     private Map<String, List<Double>> measurements = new HashMap<>();
-    @Getter
     private Map<String, List<VmMeasurement>> vmMeasurements = new HashMap<>();
 
-    @Setter
-    @Getter
     private Double initialWeight;
 
     public StackTraceTreeNode(StackTraceTreeNode parent, List<StackTraceTreeNode> children, StackTraceTreePayload payload) {
@@ -133,4 +121,56 @@ public class StackTraceTreeNode implements Serializable {
         }
         return false;
     }
+
+   public StackTraceTreeNode getParent() {
+      return parent;
+   }
+
+   public void setParent(StackTraceTreeNode parent) {
+      this.parent = parent;
+   }
+
+   public List<StackTraceTreeNode> getChildren() {
+      return children;
+   }
+
+   public void setChildren(List<StackTraceTreeNode> children) {
+      this.children = children;
+   }
+
+   public StackTraceTreePayload getPayload() {
+      return payload;
+   }
+
+   public void setPayload(StackTraceTreePayload payload) {
+      this.payload = payload;
+   }
+
+   public Map<String, List<Double>> getMeasurements() {
+      return measurements;
+   }
+
+   public void setMeasurements(Map<String, List<Double>> measurements) {
+      this.measurements = measurements;
+   }
+
+   public Map<String, List<VmMeasurement>> getVmMeasurements() {
+      return vmMeasurements;
+   }
+
+   public void setVmMeasurements(Map<String, List<VmMeasurement>> vmMeasurements) {
+      this.vmMeasurements = vmMeasurements;
+   }
+
+   public Double getInitialWeight() {
+      return initialWeight;
+   }
+
+   public void setInitialWeight(Double initialWeight) {
+      this.initialWeight = initialWeight;
+   }
+
+   public List<String> getParentMethodNames() {
+      return parentMethodNames;
+   }
 }

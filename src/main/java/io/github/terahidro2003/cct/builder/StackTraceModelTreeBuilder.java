@@ -1,17 +1,20 @@
 package io.github.terahidro2003.cct.builder;
 
-import io.github.terahidro2003.cct.result.StackTraceTreeNode;
-import io.github.terahidro2003.cct.result.StackTraceTreePayload;
-import lombok.extern.slf4j.Slf4j;
-import org.openjdk.jmc.flightrecorder.stacktrace.tree.AggregatableFrame;
-import org.openjdk.jmc.flightrecorder.stacktrace.tree.Node;
-import org.openjdk.jmc.flightrecorder.stacktrace.tree.StacktraceTreeModel;
-
 import java.util.ArrayList;
 import java.util.List;
 
-@Slf4j
+import org.openjdk.jmc.flightrecorder.stacktrace.tree.AggregatableFrame;
+import org.openjdk.jmc.flightrecorder.stacktrace.tree.Node;
+import org.openjdk.jmc.flightrecorder.stacktrace.tree.StacktraceTreeModel;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import io.github.terahidro2003.cct.result.StackTraceTreeNode;
+import io.github.terahidro2003.cct.result.StackTraceTreePayload;
+
 public class StackTraceModelTreeBuilder extends StackTraceTreeBuilder {
+    private static final Logger log = LoggerFactory.getLogger(StackTraceModelTreeBuilder.class);
+   
     public StackTraceModelTreeBuilder() {
         super();
     }

@@ -1,26 +1,32 @@
 package io.github.terahidro2003.samplers.asyncprofiler;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
+import java.io.File;
+import java.time.Duration;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Objects;
+import java.util.Set;
+import java.util.UUID;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import io.github.terahidro2003.cct.builder.ExecutionSampleTreeBuilder;
-import io.github.terahidro2003.cct.builder.StackTraceDataTreeBuilder;
-import io.github.terahidro2003.cct.builder.StackTraceTreeBuilder;
-import io.github.terahidro2003.cct.builder.VmContextTreeBuilder;
-import io.github.terahidro2003.cct.jfr.ExecutionSample;
 import io.github.terahidro2003.cct.result.StackTraceTreeNode;
 import io.github.terahidro2003.config.Config;
 import io.github.terahidro2003.measurement.executor.SjswMeasurementExecutor;
 import io.github.terahidro2003.measurement.executor.asprof.AsprofMeasurementExecutor;
 import io.github.terahidro2003.utils.CommandStarter;
-import lombok.extern.slf4j.Slf4j;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
-import java.io.File;
-import java.time.Duration;
-import java.util.*;
-import static org.assertj.core.api.Assertions.assertThat;
 
-@Slf4j
 class AsyncProfilerExecutorIntegrationTest {
+   
+   private static final Logger log = LoggerFactory.getLogger(AsyncProfilerExecutorIntegrationTest.class);
 
     final File benchmarkTargetDir = new File("src/test/resources/TestBenchmark/target");
     final File benchmarkProjectDir = new File("src/test/resources/TestBenchmark");

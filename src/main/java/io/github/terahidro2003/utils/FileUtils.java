@@ -1,23 +1,30 @@
 package io.github.terahidro2003.utils;
 
-import io.github.terahidro2003.config.Config;
-import io.github.terahidro2003.config.Constants;
-import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.compress.archivers.ArchiveEntry;
-import org.apache.commons.compress.archivers.ArchiveInputStream;
-import org.apache.commons.compress.archivers.tar.TarArchiveInputStream;
-import org.apache.commons.compress.compressors.gzip.GzipCompressorInputStream;
-import org.apache.commons.io.IOUtils;
-
-import java.io.*;
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 
-@Slf4j
+import org.apache.commons.compress.archivers.ArchiveEntry;
+import org.apache.commons.compress.archivers.ArchiveInputStream;
+import org.apache.commons.compress.archivers.tar.TarArchiveInputStream;
+import org.apache.commons.compress.compressors.gzip.GzipCompressorInputStream;
+import org.apache.commons.io.IOUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import io.github.terahidro2003.config.Config;
+import io.github.terahidro2003.config.Constants;
+
 public class FileUtils {
+    private static final Logger log = LoggerFactory.getLogger(FileUtils.class);
+   
     public static String readFileToString(String fileName) throws IOException {
         return new String(Files.readAllBytes(Paths.get(fileName)));
     }

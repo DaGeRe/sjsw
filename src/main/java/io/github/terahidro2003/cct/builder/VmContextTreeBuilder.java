@@ -4,15 +4,18 @@ import io.github.terahidro2003.cct.SamplerResultsProcessor;
 import io.github.terahidro2003.cct.TreeUtils;
 import io.github.terahidro2003.cct.result.StackTraceTreeNode;
 import lombok.NonNull;
-import lombok.extern.slf4j.Slf4j;
 
 import java.io.File;
 import java.util.*;
 import java.util.stream.Collectors;
 
-@Slf4j
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class VmContextTreeBuilder extends StackTraceTreeBuilder {
 
+    private static final Logger log = LoggerFactory.getLogger(VmContextTreeBuilder.class);
+   
     public StackTraceTreeNode buildTree(@NonNull List<File> jfrs, @NonNull String commit, int vms, @NonNull String testcase,
                                         boolean filterJvmNativeNodes) {
         log.info("Building tree for testcase method: {}", testcase);

@@ -2,6 +2,8 @@ package io.github.terahidro2003.cct.jfr;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
+import io.github.terahidro2003.cct.TreeUtils;
 import io.github.terahidro2003.config.Constants;
 import lombok.extern.slf4j.Slf4j;
 
@@ -12,8 +14,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@Slf4j
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class ExecutionSample {
+   
+    private static final Logger log = LoggerFactory.getLogger(ExecutionSample.class);
+   
     private String timestamp;
     private String sampledThread;
     private String threadState;

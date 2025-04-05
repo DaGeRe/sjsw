@@ -1,21 +1,29 @@
 package io.github.terahidro2003.cct.builder;
 
-import io.github.terahidro2003.cct.SamplerResultsProcessor;
-import io.github.terahidro2003.cct.TreeUtils;
-import io.github.terahidro2003.cct.result.StackTraceTreeNode;
-import io.github.terahidro2003.cct.result.VmMeasurement;
-import lombok.extern.slf4j.Slf4j;
-
 import java.io.File;
 import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Stack;
+import java.util.UUID;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
-@Slf4j
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import io.github.terahidro2003.cct.SamplerResultsProcessor;
+import io.github.terahidro2003.cct.TreeUtils;
+import io.github.terahidro2003.cct.result.StackTraceTreeNode;
+import io.github.terahidro2003.cct.result.VmMeasurement;
+
 public class IterativeContextTreeBuilder extends StackTraceTreeBuilder {
 
+    private static final Logger log = LoggerFactory.getLogger(IterativeContextTreeBuilder.class);
+   
     public StackTraceTreeNode buildTree(List<File> jfrs, String commit, String testcase, boolean filterJvmNativeNodes,
                                         boolean parallelProcessing, int maxThreads) throws IOException {
         log.info("Building tree for testcase method: {}", testcase);

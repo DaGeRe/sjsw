@@ -15,6 +15,8 @@ import org.openjdk.jmc.flightrecorder.jdk.JdkAttributes;
 import org.openjdk.jmc.flightrecorder.jdk.JdkFilters;
 import org.openjdk.jmc.flightrecorder.stacktrace.FrameSeparator;
 import org.openjdk.jmc.flightrecorder.stacktrace.tree.StacktraceTreeModel;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.IOException;
@@ -24,8 +26,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-@Slf4j
 public class SamplerResultsProcessor {
+   
+   private static final Logger log = LoggerFactory.getLogger(SamplerResultsProcessor.class);
 
     public StacktraceTreeModel jfrToStacktraceGraph(List<File> jfrs, String... rootMethod) {
         try {
